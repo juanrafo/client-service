@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  client-service:
+    image: alpine/java:21-jdk
+    container_name: client-service
+    #restart: always
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./target/client-service-0.0.1-SNAPSHOT.jar:/app/client-service-v1.jar
+    command: ["java", "-jar", "/app/client-service-v1.jar"]
+    networks:
+      - mitocode
+
+networks:
+  mitocode:
+    name: mitocode-network
