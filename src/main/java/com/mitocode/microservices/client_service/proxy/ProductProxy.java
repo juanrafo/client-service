@@ -12,13 +12,14 @@ import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
-public class ProductProxy {
+public class ProductProxy implements IProductService{
 
     private final RestTemplate restTemplate;
 
     @Value("${client.service.url}")
     private String baseUrl;
 
+    @Override
     public List<ProductDTO> getAllProducts() {
         return List.of(Objects
                 .requireNonNull(restTemplate.getForObject(baseUrl, ProductDTO[].class)));
