@@ -14,8 +14,8 @@ import java.util.List;
 @Slf4j
 public class ProductService {
 
-    private final ProductProxy productProxy;
-    //private final ProductProxyFeign productProxy;
+    //private final ProductProxy productProxy;
+    private final ProductProxyFeign productProxy;
 
 
     public List<ProductDTO> getAllProducts() {
