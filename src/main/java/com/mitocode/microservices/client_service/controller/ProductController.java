@@ -5,11 +5,10 @@ import com.mitocode.microservices.client_service.model.ProductDTO;
 import com.mitocode.microservices.client_service.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,14 +18,13 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-    private final CircuitBreakerFactory circuitBreakerFactory;
 
     @GetMapping("/products")
+    @CircuitBreaker(name = "productCB", fallbackMethod = "alternativeMethod")
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
-        return circuitBreakerFactory.create("mitocode")
-                        .run(() -> ResponseEntity.ok(productService.getAllProducts()),
-                        e -> alternativeMethod(e));
+        return ResponseEntity.ok(productService.getAllProducts());
     }
+
 
     private ResponseEntity<List<ProductDTO>> alternativeMethod(Throwable e) {
         log.error("Error: " + e.getMessage());
