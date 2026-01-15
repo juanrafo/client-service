@@ -1,7 +1,6 @@
 package com.mitocode.microservices.client_service.service;
 
 import com.mitocode.microservices.client_service.model.ProductDTO;
-import com.mitocode.microservices.client_service.proxy.ProductProxy;
 import com.mitocode.microservices.client_service.proxy.ProductProxyFeign;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
