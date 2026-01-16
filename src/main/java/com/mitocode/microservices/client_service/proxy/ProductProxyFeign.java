@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 //@FeignClient(name = "${client.openfeign.path}")
-//@FeignClient(name = "product-service")
-@FeignClient(name = "cloud-gateway")
+@FeignClient(name = "product-service")
+//@FeignClient(name = "cloud-gateway")
 public interface ProductProxyFeign {
 
-    @GetMapping("/api/product-service/product")
+    //@GetMapping("/api/product-service/product")
+    @GetMapping("/product")
     List<ProductDTO> getAllProducts();
 }

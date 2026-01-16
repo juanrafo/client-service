@@ -12,4 +12,3 @@ client:
     url: http://host.docker.internal:9090/api/product-service/product
   openfeign:
     path: host.docker.internal:9090/api/product-service
-

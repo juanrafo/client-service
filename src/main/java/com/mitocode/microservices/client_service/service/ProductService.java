@@ -16,9 +16,9 @@ public class ProductService {
     //private final ProductProxy productProxy;
     private final ProductProxyFeign productProxy;
 
-
     public List<ProductDTO> getAllProducts() {
         log.info("Fetching all products from Product Service");
         return productProxy.getAllProducts();
     }
+
 }
