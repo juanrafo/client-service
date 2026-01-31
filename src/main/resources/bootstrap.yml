@@ -12,3 +12,17 @@ client:
     url: http://host.docker.internal:9090/api/product-service/product
   openfeign:
     path: host.docker.internal:9090/api/product-service
+
+#resilience4j:
+#  circuitbreaker:
+#    configs:
+#      mitocodeCircuitbreakerProduct:
+#        slidingWindowSize: 20
+#        failureRateThreshold: 75
+#        waitDurationInOpenState: 30s
+#        permittedNumberOfCallsInHalfOpenState: 10
+#        slowCallDurationThreshold: 2s
+#        slowCallRateThreshold: 10
+#    instances:
+#      product-cb:
+#        base-config: mitocodeCircuitbreakerProduct
